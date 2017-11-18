@@ -18,8 +18,8 @@ library(ggplot2)
 # Data <- gs_read_csv(gs_title("Data_Small"))
 # Data <- gs_read_csv(gs_title("Data_Med"))
 # Data <- readRDS("./data/Data_Med.rds")
-# Data <- readRDS("./data/Data_MedPlus.rds")
-Data <- readRDS("./data/DataAll.rds")
+Data <- readRDS("./data/Data_MedPlus.rds")
+# Data <- readRDS("./data/DataAll.rds")
 
 NextWord <- function(Input = c()) {
     # Required packages
@@ -32,7 +32,7 @@ NextWord <- function(Input = c()) {
     Input <- tolower(Input)
     Input <- removePunctuation(Input)
     Input <- removeNumbers(Input)
-    Input <- removeWords(Input, stopwords("english"))
+    # Input <- removeWords(Input, stopwords("english"))
     Input <- gsub(pattern = "ð|ÿ|â|î|ï|ÿ", replacement = "",  Input)
     Banned <- readLines(con = "http://www.bannedwordlist.com/lists/swearWords.txt", warn = FALSE)
     Input <- gsub(pattern = paste(Banned, collapse = "|"), replacement = "", Input)
